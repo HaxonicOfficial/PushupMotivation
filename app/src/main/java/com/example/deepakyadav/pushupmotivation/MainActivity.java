@@ -10,7 +10,10 @@ import android.hardware.SensorManager;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Locale;
@@ -25,6 +28,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     TextToSpeech t1;
     View v;
     Random random;
+    private int reps=0;
     private static final int SENSOR_SENSITIVITY=2;
     public final String colors[]={"#f44336","#e91e63","#9c27b0","#673ab7","#3f51b5","#2196f3","#03a9f4","#00bcd4",
             "#009688","#4caf50","#8bc34a", "#cddc39","#ffeb3b","#ffc107","#ff9800","#ff5722","#4e342e","#607d8b",
@@ -33,6 +37,8 @@ public class MainActivity extends Activity implements SensorEventListener {
     public int currentColor;
 
     public TextView textView;
+    public EditText editTextReps;
+    public ImageButton imageButtonIncremener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +48,8 @@ public class MainActivity extends Activity implements SensorEventListener {
         v=findViewById(R.id.mainActivity);
         random=new Random();
         textView=findViewById(R.id.textView);
+        editTextReps=findViewById(R.id.setSize);
+        imageButtonIncremener=findViewById(R.id.addRep);
 
         if(savedInstanceState!=null){
             textView.setText(savedInstanceState.getString("currentCount"));
@@ -56,6 +64,15 @@ public class MainActivity extends Activity implements SensorEventListener {
                 }
             }
         });
+    }
+    public void incrementReps(View view){
+        Log.i("incrementReps()", "functioncalled");
+        int current=Integer.parseInt(editTextReps.getText().toString());
+        current+=1;
+        Log.i("incrementReps()", "current: "+current);
+        editTextReps.setText(current+"");
+
+        Log.i("incrementReps()", "current incremented and set to: "+current);
     }
 
     @Override
