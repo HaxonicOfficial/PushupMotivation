@@ -43,8 +43,20 @@
             app:layout_constraintStart_toEndOf="@id/setSize"
             android:src="@drawable/ic_plus_black_symbol"
             android:onClick="incrementReps"/>
+        <ToggleButton
+            android:id="@+id/musicToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/reset"
+            android:onClick="toggleMusic"
+            android:textOn="sounds"
+            android:textOff="sounds"
+
+            />
 
         <ImageButton
+            android:id="@+id/reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_revert"
